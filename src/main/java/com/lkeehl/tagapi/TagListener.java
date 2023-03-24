@@ -146,7 +146,7 @@ public class TagListener implements Listener {
 
                     if (packetType.equals(ENTITY_LOOK) || packetType.equals(REL_ENTITY_MOVE_LOOK)) {
                         List<AbstractPacket> packets = new ArrayList<>();
-                        ((BaseTagEntity) tag.getBottomTagLine().getBottomEntity()).getMetaPackets(event.getPlayer(), packets, !event.getPlayer().isInvisible(), event.getPlayer().isSneaking());
+                        ((BaseTagEntity) tag.getBottomTagLine().getBottomEntity()).getMetaPackets(event.getPlayer(), packets, false, event.getPlayer().isSneaking());
                         packets.forEach(p -> p.sendPacket(event.getPlayer()));
                     }
 

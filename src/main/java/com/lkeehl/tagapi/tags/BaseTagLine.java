@@ -38,10 +38,7 @@ public class BaseTagLine implements TagLine {
         BaseTagEntity tempEntity;
         if (removeFish) {
             tempEntity = bottomEntity = new BaseTagEntity(this, null, EntityType.ARMOR_STAND,false);
-            tempEntity = new BaseTagEntity(this, tempEntity, EntityType.TROPICAL_FISH);
             tempEntity = new BaseTagEntity(this, tempEntity, EntityType.SLIME);
-            tempEntity = new BaseTagEntity(this, tempEntity, EntityType.TROPICAL_FISH);
-            tempEntity = new BaseTagEntity(this, tempEntity, EntityType.TURTLE);
         } else {
             tempEntity = bottomEntity = new BaseTagEntity(this, null, EntityType.SILVERFISH);
             tempEntity = new BaseTagEntity(this, tempEntity, EntityType.SILVERFISH);

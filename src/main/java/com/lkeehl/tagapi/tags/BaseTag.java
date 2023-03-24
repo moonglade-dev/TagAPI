@@ -6,7 +6,6 @@ import com.lkeehl.tagapi.api.TagLine;
 import com.lkeehl.tagapi.wrappers.AbstractPacket;
 import com.lkeehl.tagapi.wrappers.Wrappers;
 import com.lkeehl.tagapi.util.TagUtil;
-import net.minecraft.network.protocol.game.PacketPlayInFlying;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -62,7 +61,7 @@ public class BaseTag extends Tag {
     }
 
     private boolean isTargetVisible() {
-        return !(this.target instanceof LivingEntity e) || !e.isInvisible();
+        return !(this.target instanceof LivingEntity e);
     }
 
     private boolean isTargetSneaking() {

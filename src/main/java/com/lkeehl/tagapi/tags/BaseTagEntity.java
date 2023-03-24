@@ -14,8 +14,8 @@ import com.lkeehl.tagapi.wrappers.DevPacket;
 import com.lkeehl.tagapi.wrappers.Wrappers;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
-import net.minecraft.network.chat.IChatBaseComponent;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.server.v1_8_R3.Entity;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -53,7 +53,7 @@ public class BaseTagEntity implements TagEntity {
         entityWatchers.clear();
 
         versionFile = file;
-        List<EntityType> mobs = Arrays.asList(EntityType.ARMOR_STAND, EntityType.SILVERFISH, EntityType.SLIME, EntityType.TROPICAL_FISH, EntityType.TURTLE);
+        List<EntityType> mobs = Arrays.asList(EntityType.ARMOR_STAND, EntityType.SILVERFISH, EntityType.SLIME);
 
         for (EntityType mob : mobs) {
             entityWatchers.add(mob, new DataEntry(file.getDataWatcherIndex(mob, WatcherType.INVISIBLE_CROUCH), Byte.class, (byte) (1 << 5)));
@@ -65,12 +65,9 @@ public class BaseTagEntity implements TagEntity {
         Function<EntityType, DataEntry> entry = i -> new DataEntry(file.getDataWatcherIndex(i, WatcherType.NO_AI), Byte.class, (byte) 1);
         entityWatchers.add(EntityType.SILVERFISH, entry.apply(EntityType.SILVERFISH));
         entityWatchers.add(EntityType.SLIME, entry.apply(EntityType.SLIME));
-        entityWatchers.add(EntityType.TROPICAL_FISH, entry.apply(EntityType.TROPICAL_FISH));
-        entityWatchers.add(EntityType.TURTLE, entry.apply(EntityType.TURTLE));
 
         entityWatchers.add(EntityType.ARMOR_STAND, new DataEntry(file.getDataWatcherIndex(EntityType.ARMOR_STAND, WatcherType.IS_SMALL_MARKER), Byte.class, (byte) 17));
         entityWatchers.add(EntityType.SLIME, new DataEntry(file.getDataWatcherIndex(EntityType.SLIME, WatcherType.SIZE), Integer.class, -1));
-        entityWatchers.add(EntityType.TURTLE, new DataEntry(file.getDataWatcherIndex(EntityType.TURTLE, WatcherType.IS_BABY), Boolean.class, true));
 
         Field[] fields = Entity.class.getDeclaredFields();
         for (Field f : fields) {
